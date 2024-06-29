@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles/main.css">
+        <title>Manga Reader</title>
+    </head>
+    <body>
+        <% if (locals.mangas) { %>
+            <form action="/search-manga" method="post">
+                <label for="search">Search your manga here!</label>
+                <input type="text" id="search" name="title" placeholder="Search here!">
+            </form>
+            <% mangas.forEach(manga => { %>
+                <div class="card">
+                    <div class="showcase">
+                        <a href="/<%= manga.manga.id %>"><img src="<%= manga.coverUrl %>" alt="<%= manga.manga.attributes.title.en %>" class="cover" /></a>
+                        <div class="header">
+                            <a href="/<%= manga.manga.id %>"><h1><%= manga.manga.attributes.title.en %></h1></a>
+                            <span>Status: <%= manga.manga.attributes.status %></span>
+                            <div>
+                                <span>Tags: </span>
+                                <% manga.manga.attributes.tags.forEach(tag => { %>
+                                    <span class="tag"><%= tag.attributes.name.en %></span>
+                                <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description visible">
+                        <p><%= manga.manga.attributes.description.en %></p>
+                    </div>
+                    <button type="button" class="more">More</button>
+                </div>
+                <% }) %>
+
+        <% } else { %>
+            <h1>An error occurred, please contact the staff.</h1>
+        <% } %>
+
+        <script>
+            const more = document.getElementsByClassName("more");
+            const description = document.getElementsByClassName("description");
+            
+            for (let i = 0; i < more.length; i++) {
+                more[i].addEventListener("click", () => {
+                    description[i].classList.toggle("visible");
+                    
+                    if (description[i].classList.contains("visible")) {
+                        more[i].innerHTML = "More"
+                    } else {
+                        more[i].innerHTML = "Less"
+                    }
+                });
+
+
+                if (description[i].classList.contains("visible")) {
+                    more[i].innerHTML = "More"
+                } else {
+                    more[i].innerHTML = "Less"
+                }
+            }
+        </script>
+    </body>
+    </html>

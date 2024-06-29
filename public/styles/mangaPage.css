@@ -1,0 +1,78 @@
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem 0;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+}
+
+a {
+    all: unset;
+    cursor: pointer;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    /* background-color: rgb(190, 190, 190); */
+    background-color: rgba(201, 201, 201, 0.3);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 12px;
+    min-width: 300px;
+    width: 60svw;
+    max-width: 800px;
+}
+
+.mangaHeader {
+    display: flex;
+    gap: 2rem;
+}
+
+.cover {
+    overflow: hidden;
+    max-height: 300px;
+    min-width: 70px;
+    width: 10rem;
+    max-width: 400px;
+}
+
+.info {
+    padding-top: 10px;
+    max-width: 70%;
+}
+
+.division {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chapterList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.chapter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(201, 201, 201, 0.5);
+    width: 100%;
+    min-height: 25px;
+    border-radius: 4px;
+}
+
+.chapter:hover {
+    background-color: rgb(190, 190, 190);
+}

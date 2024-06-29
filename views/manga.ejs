@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/mangaPage.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <% if (locals.manga) { %>
+        <div class="card">
+            <div class="mangaHeader">
+                <img src="<%= coverUrl %>" alt="<%= title %>" class="cover" />
+                <div class="division">
+                    <div class="info">
+                        <h1 class="title"><%= title %></h1>
+                        <p>Descrition</p>
+                    </div>
+                    <div class="tags">
+                        <p>Tags</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chapterList">
+                <% manga.forEach(item => { %>
+                    <a href="/<%= item.Id %>/chapter/<%= item.Chapter %>" class="chapter"><%= item.Chapter %></a>
+                <% }); %>
+            </div>
+        </div>
+    <% } else { %>
+        <h1>An error occurred, please contact the staff.</h1>
+    <% } %>
+</body>
+</html>
